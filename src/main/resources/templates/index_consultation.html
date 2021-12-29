@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Consultation Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container my-2">
+        <h1>Consultations List</h1>
+
+        <a th:href="@{/showNewConsultationForm1}" class="btn btn-primary btn-sm mb-3"> Add Consultation </a>
+
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th>Consultation type</th>
+                    <th>Consultation prix</th>
+                    <th>Consultation date</th>
+                    <th>Consultation id_Medecin</th>
+                    <th>Consultation id_Malade</th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="Consultation : ${listConsultations}">
+                    <td th:text="${Consultation.type}"></td>
+                    <td th:text="${Consultation.prix}"></td>
+                    <td th:text="${Consultation.date}"></td>
+                    <td th:text="${Consultation.id_Medecin}"></td>
+                    <td th:text="${Consultation.id_Malade}"></td>
+                    <td> <a th:href="@{/showFormForUpdate1/{id}(id=${Consultation.id})}" class="btn btn-primary">Update</a>
+                        <a th:href="@{/deleteConsultation1/{id}(id=${Consultation.id})}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+                    <a th:href="@{/1}" class="btn btn-primary btn-sm mb-3">Medecins</a>
+                    <a th:href="@{/index_malade1}" class="btn btn-primary btn-sm mb-3">Malades</a>
+    </div>
+</body>
+
+</html>
