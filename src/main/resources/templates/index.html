@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="ISO-8859-1">
     <title>Medecin Management System</title>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            background: url("https://www.blg.com/-/media/blg/images/social/hospital-hallway.jpg") no-repeat center;
+            height: 100%;
+            background-size: cover;
+        }
+    </style>
 </head>
-
 <body>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Medecins List</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a th:href="@{/index_consultation}" class="nav-link">Consultations</a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/index_malade}" class="nav-link">Malades</a>
+            </li>
+        </ul>
+    </div>
+</nav>
     <div class="container my-2">
-        <h1>Medecins List</h1>
-
-        <a th:href="@{/showNewMedecinForm}" class="btn btn-primary btn-sm mb-3"> Add Medecin </a>
-
-        <table border="1" class="table table-striped table-responsive-md">
+        <table class="table table-bordered bg-white text-dark mt-5">
             <thead>
                 <tr>
-                    <th>Medecin First Name</th>
-                    <th>Medecin Last Name</th>
-                    <th>Medecin Speciality</th>
-                    <th> Actions </th>
+                    <th class="text-center">Medecin First Name</th>
+                    <th class="text-center">Medecin Last Name</th>
+                    <th class="text-center">Medecin Speciality</th>
+                    <th class="text-center"> Actions </th>
                 </tr>
             </thead>
             <tbody>
@@ -30,15 +44,23 @@
                     <td th:text="${Medecin.firstName}"></td>
                     <td th:text="${Medecin.lastName}"></td>
                     <td th:text="${Medecin.speciality}"></td>
-                    <td> <a th:href="@{/showFormForUpdate/{id}(id=${Medecin.id})}" class="btn btn-primary">Update</a>
-                        <a th:href="@{/deleteMedecin/{id}(id=${Medecin.id})}" class="btn btn-danger">Delete</a>
+                    <div>
+
+                    </div>
+                    <td>
+                        <div class="text-center">
+                            <a th:href="@{/showFormForUpdate/{id}(id=${Medecin.id})}" class="btn btn-warning">Update</a>
+                            <a th:href="@{/deleteMedecin/{id}(id=${Medecin.id})}" class="btn btn-danger">Delete</a>
+                        </div>
                     </td>
                 </tr>
+            <tr class="text-center">
+                <td colspan="4">
+                    <a th:href="@{/showNewMedecinForm}" class="btn btn-primary"> Add Medecin </a>
+                </td>
+            </tr>
             </tbody>
         </table>
-                    <a th:href="@{/index_consultation}" class="btn btn-primary btn-sm mb-3">Consultations</a>
-                    <a th:href="@{/index_malade}" class="btn btn-primary btn-sm mb-3">Malades</a>
     </div>
 </body>
-
 </html>
