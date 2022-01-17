@@ -1,10 +1,14 @@
 package org.o7planning.gestion.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,7 +28,16 @@ public class Medecin {
     @Column(name = "speciality")
     private String speciality;
     
-    public long getId() {
+    @OneToMany (mappedBy = "medecin")
+    private List<Consultation> consultations;
+    
+    public List<Consultation> getConsultations() {
+		return consultations;
+	}
+	public void setConsultations(List<Consultation> consultations) {
+		this.consultations = consultations;
+	}
+	public long getId() {
         return id;
     }
     public void setId(long id) {

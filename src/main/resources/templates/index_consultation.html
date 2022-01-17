@@ -46,8 +46,8 @@
                     <td th:text="${Consultation.type}"></td>
                     <td th:text="${Consultation.prix}"></td>
                     <td th:text="${Consultation.date}"></td>
-                    <td th:text="${Consultation.id_Medecin}"></td>
-                    <td th:text="${Consultation.id_Malade}"></td>
+                    <td th:text="${Consultation.medecin.id}"></td>
+                    <td th:text="${Consultation.malade.id}"></td>
                     <td>
                         <div class="text-center">
                             <a th:href="@{/showFormForUpdate1/{id}(id=${Consultation.id})}" class="btn btn-warning">Update</a>
